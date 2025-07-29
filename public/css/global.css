@@ -1,0 +1,506 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color:white;
+  line-height: 1.6;
+}
+.container, .container-fluid {
+  max-width: 1440px;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 0 auto;
+}
+.container-content{
+  margin: 0 auto;
+  padding: 40px 60px;
+  background-color: #d1e7ff; 
+  color: var(--text-dark-1);
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+body.modal-open {
+  padding-right: 0 !important;
+  overflow: hidden;
+}
+.modal-body ol {
+  color: #343a40 !important; /* Ganti sesuai warna teks kamu */
+}
+
+.modal-body ol li::marker {
+  color: #60697B !important; /* Warna angka sama dengan teks */}
+
+  .breadcrumb-back-link {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Inter';
+  color: var(--primary-color);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+.breadcrumb-back-link:hover {
+  color: var(--primary-300-color);
+  text-decoration: underline;
+}
+#loader {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background: white;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid var(--primary-500-color);
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+/* Tablet: width <= 768px */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .container-content {
+    padding: 60px 30px;
+  }
+  .container-content h1 {
+  font-size: clamp(24px, 5vw, 36px);
+}
+}
+
+/* Mobile: width <= 576px */
+@media (max-width: 576px) {
+  .container{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .container-content {
+    padding: 60px 20px;
+  }
+  .container-content h1 {
+    font-size: 24px;
+  }
+
+  .container-content p {
+    font-size: 16px;
+  }
+  .container-content {
+    text-align: left;
+  }
+  .p{
+    font-size: 14px;
+  }
+}
+
+/* ========== ROOT VARIABEL (GLOBAL COLORS & FONT) ========== */
+:root {
+  --primary-color: #005FCA;      
+  --secondary-color: #FFA500; 
+  --primary-100-color: #CCE4FF;
+  --primary-300-color: #66ADFF;
+  --primary-500-color: #005FCA;
+  --primary-700-color: #004799;
+  --secondary-100-color: #FFEDCC;
+  --secondary-300-color: #FFC966;
+  --secondary-500-color: #FFA600;
+  --secondary-700-color: #996300;
+  --success-color: #198754;      
+  --danger-color: #dc3545;
+  --warning-color: #FFC107;
+  --info-color: #0D6EFD;
+  --bg-white-color: #ffff; 
+  --bg-light-color: #f5f5f5;        
+  --dark-color: #212529;
+  --light-color: #ffffff;
+  --text-light: #ffff;
+  --text-dark-1: #60697B;
+  --text-dark-2: #343F52;
+
+  --font-primary: 'Montserrat';
+  --font-secondary: 'Inter';
+
+  --btn-sm-padding: 8px 16px; 
+  --btn-md-padding: 12px 20px;
+  --btn-lg-padding: 16px 24px;
+
+  --transition-fast: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ========== TYPOGRAPHY GLOBAL ========== */
+h1 {
+  font-size: 2.5rem; /* 40px desktop */
+}
+
+h2 {
+  font-size: 2rem; /* 32px desktop */
+}
+
+h3 {
+  font-size: 1.75rem; /* 28px desktop */
+}
+
+h4 {
+  font-size: 1.5rem; /* 24px desktop */
+}
+
+h5 {
+  font-size: 1.25rem; /* 20px desktop */
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem; /* 32px mobile */
+  }
+  h2 {
+    font-size: 1.75rem; /* 28px mobile */
+  }
+  h3 {
+    font-size: 1.5rem; /* 24px mobile */
+  }
+  h4 {
+    font-size: 1.25rem; /* 20px mobile */
+  }
+  h5 {
+    font-size: 1rem; /* 16px mobile */
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+p, label, input, button {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+}
+  
+/* ========== LINK STYLE ========== */
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition-fast);
+}
+a:hover {
+  color: var(--accent-color);
+}
+
+/* ========== BUTTON GLOBAL ========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; 
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter' ;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Primary */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background-color: var(--primary-700-color);
+  color: var(--light-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.btn-primary:focus {
+  background-color: var(--primary-700-color);
+  color: var(--light-color);
+}
+
+.btn-whatsapp{
+  background-color: #25D366;
+  color: var(--text-light);
+  font-weight: 600;
+}
+.btn-whatsapp:hover {
+  background-color: #1cac53;
+  color: var(--text-light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+.btn-whatsapp:focus {
+  background-color: #25D366 !important;
+  color: var(--light-color) !important;
+}
+
+/* Button Secondary */
+.btn-secondary {
+  background-color: var(--secondary-500-color) !important;
+  color: var(--text-light) !important;
+  font-weight: 600;
+}
+.btn-secondary:hover {
+  background-color: var(--primary-700-color) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+.btn-secondary:focus {
+  background-color: var(--primary-500-color) !important;
+  color: var(--light-color) !important;
+}
+.btn-secondary:active {
+  background-color: var(--primary-700-color) !important; 
+  color: var(--light-color) !important;
+}
+
+/* Button Tertiary */
+.btn-tertiary {
+  color: var(--primary-color) !important;
+}
+.btn-tertiary:hover {
+  background-color: var(--primary-color) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease;
+  border: none;
+}
+.btn-tertiary-2 {
+  color: var(--secondary-color) !important;
+}
+.btn-tertiary-2:hover {
+  background-color: var(--secondary-500-color) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease;
+  border: none;
+}
+.btn-tertiary-danger{
+  color: var(--danger-color) !important;
+}
+.btn-tertiary-danger:hover {
+  background-color: var(--danger-color) !important;
+  color: var(--text-light) !important;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Button Outline */
+.btn-outline {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter';
+  color: var(--primary-color);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  gap: 8px;
+}
+.btn-outline:hover {
+  color: var(--primary-700-color);
+  text-decoration: underline;
+}
+.btn-outline-2 {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter';
+  color: var(--secondary-color);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  gap: 8px;
+}
+.btn-outline-2:hover {
+  color: var(--primary-700-color);
+  text-decoration: underline;
+}
+.btn-outline-danger {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter';
+  color: var(--danger-color);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  gap: 8px;
+}
+.btn-outline-danger:hover {
+ color: var(--danger-color);
+  text-decoration: underline;
+}
+
+
+/* Ikon di dalam tombol */
+.btn i, .btn svg {
+  font-size: 18px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* Ukuran */
+.btn-sm {
+  padding: var(--btn-sm-padding);
+  font-size: 12px;
+  line-height: 14px;
+}
+.btn-md {
+  padding: var(--btn-md-padding);
+  font-size: 16px;
+  line-height: 20px;
+}
+.btn-lg {
+  padding: var(--btn-lg-padding);
+  font-size: 18px;
+  line-height: 23px;
+}
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #25D366;
+  color: white;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: var(--bg-white-color);
+}
+
+
+.help-float {
+  position: fixed;
+  bottom: 105px; /* 20 (WA bottom) + 72 (WA height) + 18 (jarak antar tombol) */
+  right: 20px;
+  background-color: none ;
+  color: var(--primary-color);
+  border: none;
+  border-radius: 50%;
+  padding: 10px 16px;
+  font-size: 16px;
+  z-index: 9999;
+
+}
+
+.help-float:hover {
+  background-color: var(--primary-500-color);
+  color: white;
+}
+
+
+/* ========== MODAL ========== */
+.custom-modal {
+  border-radius: 12px;
+  padding: 20px 10px;
+  border: none;
+}
+.custom-modal .modal-title {
+  font-weight: 600;
+  color: var(--text-dark-2);
+}
+.custom-modal p {
+  margin: 0;
+  color: var(--text-dark-1); 
+}
+.custom-modal .modal-footer {
+  background: none;
+}
+.custom-modal .btn-cancel {
+  background-color: #e5e7eb; /* Tailwind gray-200 */
+  color: var(--text-dark-2); 
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter' ;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.custom-modal .btn-cancel:hover {
+  background-color: var(--secondary-color); 
+  color: var(--text-light);
+}
+
+/* Modal Simpan Produk */
+.custom-modal .modal-simpan {
+  text-align: center;
+  font-size: 40px;
+  color: var(--primary-color); 
+  margin-top: 10px;
+}
+.custom-modal .btn-simpan {
+  background-color: var(--primary-color); 
+  color: var(--text-light);
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter' ;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.custom-modal .btn-simpan:hover {
+  background-color: var(--primary-700-color); 
+  color: var(--text-light);
+}
+
+/* Modal Hapus Produk */
+.custom-modal .modal-hapus {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 10px;
+}
+.custom-modal .btn-hapus {
+  background-color: var(--danger-color); 
+  color: var(--text-light);
+  padding: 8px 20px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Inter' ;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.custom-modal .btn-hapus:hover {
+  background-color: #bb2d3b;
+}
+
+
