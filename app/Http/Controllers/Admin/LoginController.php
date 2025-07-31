@@ -39,9 +39,14 @@ class LoginController extends Controller
         $credentials = $request->only('username', 'password');
 
         // Coba login
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate(); // regenerate session untuk keamanan
-            return redirect()->intended(route('admin.dashboard')); // gunakan intended
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate(); // regenerate session untuk keamanan
+        //     return redirect()->intended(route('admin.dashboard')); // gunakan intended
+        // }
+
+        if (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('admin.dashboard'));
         }
         
         // Jika gagal login

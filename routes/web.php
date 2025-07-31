@@ -66,7 +66,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // ================== Admin Panel (Protected) ==================
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web'])->group(function () {
     // 📊 Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 

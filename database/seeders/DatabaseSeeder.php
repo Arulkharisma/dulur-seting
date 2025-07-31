@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             MaterialsTableSeeder::class,
             LaminationsTableSeeder::class,
             ProductsTableSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
